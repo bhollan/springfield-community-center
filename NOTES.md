@@ -5,14 +5,12 @@ Assets (Room, Projector, Speaker, Chairs, Tables)
 Event (date, assets, users (all kinds), public/private)
 
 PICKUP:
-header/nav/layout
+messages
 
 fill-out model meat
 write some decent seeds
 think about validations
-fill-out AR relations comletely (and probably some migrations too)
-
-setup omniauth
+fill-out AR relations completely (and probably some migrations too)
 
 Asset class method ideas:
 first_unbooked_date
@@ -21,3 +19,5 @@ available_assets
 User class method ideas:
 busiest_user
 lurker_count
+
+refactor omniauth config to use dotenv gem

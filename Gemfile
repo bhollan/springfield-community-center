@@ -27,6 +27,7 @@ gem 'devise'
 gem 'pundit'
 gem 'rspec'
 gem 'capybara'
+gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password

@@ -215,6 +215,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth
   omniauth-facebook
   pry
   pundit
