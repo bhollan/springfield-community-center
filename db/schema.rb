@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428041123) do
+ActiveRecord::Schema.define(version: 20160429235602) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "name"
@@ -25,16 +25,18 @@ ActiveRecord::Schema.define(version: 20160428041123) do
   create_table "event_assets", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "asset_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "event_time"
-    t.integer  "owner_id"
+    t.datetime "event_date"
+    t.integer  "user_id"
     t.boolean  "public",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "title"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,2 +1,7 @@
 <h1>Assets#index</h1>
 <p>Find me in app/views/assets/index.html.erb</p>
+<ul>
+<% @assets.each do |asset| %>
+  <li><%= link_to asset.name, asset_path(asset) %></li>
+<% end %>
+</ul>

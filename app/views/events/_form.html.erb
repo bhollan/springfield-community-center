@@ -1,0 +1,15 @@
+<%= form_for @event do |f| %>
+  <% f.hidden_field :id %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label "Date" %><br>
+  <input type='text' data-provide='datepicker' name='event[event_date]'><br>
+  <%= f.check_box :public %>
+  <%= f.label "Public event" %>
+  <br><br>
+  <% if @event.new_record? %>
+    <%= f.submit "Create Event" %>
+  <% else %>
+    <%= f.submit "Update Event" %>
+  <% end %>
+<% end %>
