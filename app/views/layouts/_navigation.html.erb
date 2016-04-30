@@ -34,7 +34,7 @@
           <% end %>
         </li>
         <li class="navbar-right">
-          <a href=<%= edit_user_registration_path %>><span class="glyphicon glyphicon-user"></span> Edit Profile</a>
+          <a href=<%= edit_user_registration_path %>><span class="glyphicon glyphicon-user"></span> Edit <%= current_user.email %>'s Profile</a>
         </li>
       <% else %>
         <li class="navbar-right">

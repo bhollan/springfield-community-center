@@ -5,6 +5,8 @@
   <li>Event point-of-contact: <%= @event.user.email %></li>
   <li>Event date: <%= @event.event_date %></li>
 </ul>
-<% if user_signed_in? && current_user.id == @event.user.id %>
+<%# <% if user_signed_in? && current_user.id == @event.user.id %>
+  <% if @modifiable_or_deletable %>
   <%= button_to "Edit Event", edit_event_path(@event), method: :get %>
+  <%= button_to "Cancel Event", event_path(@event), method: :delete %>
 <% end %>
