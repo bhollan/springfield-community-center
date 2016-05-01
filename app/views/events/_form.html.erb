@@ -3,13 +3,26 @@
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   <%= f.label "Date" %><br>
-  <input type='text' data-provide='datepicker' name='event[event_date]'><br>
+  <input type='text' data-provide='datepicker' name='event[event_date]' value=<%= @event.event_date.strftime('%m/%d/%Y') unless @event.event_date.nil? %>><br>
   <%= f.check_box :public %>
-  <%= f.label "Public event" %>
-  <br><br>
+  <%= f.label "Public event" %><br>
+  <%= f.label "Assets:" %><br>
+  <ul>
+  <% Asset.kinds.each do |kind_name, kind_id| %>
+    <li>
+      <%= f.label kind_name %>:  <%= f.collection_select(:assets, Asset.where(kind: kind_id), :id, :name, {include_blank: '...choose one'}) %>
+    </li>
+  <% end %>
+  </ul>
+  <br>
   <% if @event.new_record? %>
     <%= f.submit "Create Event" %>
   <% else %>
     <%= f.submit "Update Event" %>
   <% end %>
+<% end %>
+<% if !@event.new_record? %>
+  <%= button_to "Cancel", event_path(@event), method: :get %>
+<% else %>
+  <%= button_to "Cancel", root_path, method: :get %>
 <% end %>

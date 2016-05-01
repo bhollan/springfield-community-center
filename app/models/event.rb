@@ -2,9 +2,8 @@ class Event < ActiveRecord::Base
   has_many :event_assets
   has_many :assets, through: :event_assets
   belongs_to :user
-  validate :public_events_must_register_early
+  validate :cannot_create_past_event
 
-  def public_events_must_register_early
-    binding.pry
+  def cannot_create_past_event
   end
 end

@@ -8,12 +8,4 @@ class Asset < ActiveRecord::Base
 
   enum kind: self.kinds
 
-  def next_available
-    #returns next availble date/time this asset is available
-  end
-
-  def self.available_on(request_date)
-    #returns array of assets available on a given date
-  end
-
 end

@@ -11,7 +11,7 @@
 <body>
 
   <%= render partial: 'layouts/navigation' %>
-  <%= render partial: 'layouts/messages' %>
+  <%= render partial: 'layouts/messages', flash: flash %>
   <%= yield %>
 
 </body>

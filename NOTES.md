@@ -16,8 +16,8 @@ users can see their private events in show (with edit button)
 users can see their private events in index
 non-event-owning users cannot see others' private events in index or show (with alert message)
 non-event-owning users can see others' private events in the user show page
-future events can be edited/deleted(cancelled)
-past events cannot be edited/deleted
+future events can be edited/cancelled
+past events cannot be created/edited/deleted
 
 
 BULLETS:
@@ -25,11 +25,11 @@ BULLETS:
   2: has_many, belongs_to, has_many, through:
 3: EventAsset needs attribute(s)
 4: Model validations
-5: Asset#most_used / Asset#most_unused
+5: Asset#most_used / projector#events(?)
 6: User management of EventAssets
   7: Devise
   8: OmniAuth
-9: Nested resource(s): /events/12/event_assets/select (checkboxes)
+9: Nested resource(s): /events/12/event_assets/select
 10: Validation errors in 'field_with_errors'
   11: DRY
 
