@@ -8,4 +8,16 @@ class Asset < ActiveRecord::Base
 
   enum kind: self.kinds
 
+  def num_of_events
+    self.events.count
+  end
+
+  def most_rented_of_same_kind
+    set = Asset.where(kind: self[:kind])
+    set.max_by{|one| one.num_of_events}
+  end
+
+  def self.most_rented_asset
+    Asset.all.max_by{|one| one.num_of_events}
+  end
 end

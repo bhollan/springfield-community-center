@@ -3,6 +3,7 @@ class CreateEventAssets < ActiveRecord::Migration
     create_table :event_assets do |t|
       t.integer :event_id
       t.integer :asset_id
+      t.integer :quantity
 
       t.timestamps null: false
     end

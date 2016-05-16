@@ -1,3 +1,13 @@
+<% if @event.errors.any? %>
+  <div id='error_explanation' class='alert alert-danger fade-in'>
+    <h4><%= pluralize(@event.errors.count, "error") %> prevented this event from being saved:</h4>
+    <ul>
+      <% @event.errors.messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @event do |f| %>
   <% f.hidden_field :id %>
   <%= f.label :title %><br>
@@ -9,9 +19,16 @@
   <%= f.label "Assets:" %><br>
   <ul>
   <% Asset.kinds.each do |kind_name, kind_id| %>
-    <li>
-      <%= f.label kind_name %>:  <%= f.collection_select(:assets, Asset.where(kind: kind_id), :id, :name, {include_blank: '...choose one'}) %>
-    </li>
+    <!-- have a 'select' element for each kind -->
+    <li><%= f.label kind_name %>: <%= selects_for_kinds(f,kind_name, kind_id) %></li>
+    <!-- have a 'quantity' number field if that 'kind' is chair or table -->
+    <% if kind_name=="chair" || kind_name=="table" %>
+      <% kind_ea = @event.send((kind_name + "_ea").to_sym) %>
+      <div class=<%= "alert-danger" if !kind_ea.nil? && kind_ea.errors.any? %>>
+        <%= f.label :quantity %>
+        <%= f.number_field "#{kind_name}_quantity" %>
+      </div>
+    <% end %>
   <% end %>
   </ul>
   <br>

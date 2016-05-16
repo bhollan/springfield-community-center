@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429235602) do
+ActiveRecord::Schema.define(version: 20160428041123) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "name"
     t.integer  "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "max_quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "assets", ["name"], name: "index_assets_on_name"
@@ -25,18 +26,18 @@ ActiveRecord::Schema.define(version: 20160429235602) do
   create_table "event_assets", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "asset_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 1
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
     t.datetime "event_date"
     t.integer  "user_id"
+    t.string   "title"
     t.boolean  "public",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "title"
   end
 
   create_table "users", force: :cascade do |t|

@@ -8,7 +8,16 @@
   <li>Assets: <%= 'none' if @event.assets.size == 0 %>
     <ul>
       <% @event.assets.each do |asset| %>
-        <li><%= asset.kind %>: <%= asset.name %></li>
+        <li><%= asset.kind %>: <%= link_to asset.name, asset_path(asset) %></li>
+        <% if asset.kind=='chair' %>
+          <ul>
+            <li>quantity: <%= @event.chair_quantity %></li>
+          </ul>
+        <% elsif asset.kind=='table' %>
+          <ul>
+            <li>quantity: <%= @event.table_quantity %></li>
+          </ul>
+        <% end %>
       <% end %>
     </ul>
   </li>

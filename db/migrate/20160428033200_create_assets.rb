@@ -3,6 +3,7 @@ class CreateAssets < ActiveRecord::Migration
     create_table :assets do |t|
       t.string :name
       t.integer :kind
+      t.integer :max_quantity
 
       t.timestamps null: false
     end

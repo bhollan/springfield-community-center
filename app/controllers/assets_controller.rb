@@ -11,6 +11,7 @@ class AssetsController < ApplicationController
     #...so we want to group them and render an index
     if Asset.kinds.keys.include? params[:id]
       @assets = Asset.where(kind: Asset.kinds.keys.index(params[:id]))
+      @assets = @assets.sort{|one| one.event_assets.count}
       render 'index'
     #...or a normal id (4,6,2)
     else

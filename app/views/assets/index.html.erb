@@ -4,4 +4,12 @@
 <% @assets.each do |asset| %>
   <li><%= link_to asset.name, asset_path(asset) %></li>
 <% end %>
+<h4>Most rented: 
+  <% if @assets.count == Asset.all.count %>
+    <% most_rented = Asset.most_rented_asset %>
+  <% else %>
+    <% most_rented = @assets.first.most_rented_of_same_kind %>
+  <% end %>
+  <%= link_to most_rented.name, asset_path(most_rented) %>
+</h4>
 </ul>

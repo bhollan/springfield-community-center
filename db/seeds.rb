@@ -34,17 +34,23 @@ asset_names_and_kinds = [{name: "meeting hall 2",
                          {name: "Kenwoods",
                           kind: 2},
                          {name: "metal folding",
-                          kind: 3},
+                          kind: 3,
+                          max_quantity: 100},
                          {name: "plastic folding",
-                          kind: 3},
+                          kind: 3,
+                          max_quantity: 200},
                          {name: "plastic stacking",
-                          kind: 3},
+                          kind: 3,
+                          max_quantity: 20},
                          {name: "8 foot round",
-                          kind: 4},
+                          kind: 4,
+                          max_quantity: 32},
                          {name: "6 foot wood",
-                          kind: 4},
+                          kind: 4,
+                          max_quantity: 25},
                          {name: "4 foot wood",
-                          kind: 4}]
+                          kind: 4,
+                          max_quantity: 20}]
 
 asset_names_and_kinds.each do |one|
   Asset.find_or_create_by(one)
@@ -86,3 +92,16 @@ event_details = [{user_id: @jeff.id, event_date: DateTime.new(2016, 8, 15), titl
 event_details.each do |one|
   Event.find_or_create_by(one)
 end
+
+@recycle = Event.find_by(title:"Recycling Discussion")
+@recycle.assets << [Asset.first, Asset.last]
+@xbox = Event.find_by(title:"XBOX party")
+@xbox.assets << Asset.second
+@superbowl = Event.find_by(title:"Viewing Super Bowl")
+@superbowl.assets << Asset.find_by(name:"Hitachi")
+@superbowl.assets << Asset.find_by(name:"Mackies")
+@superbowl.assets << Asset.find_by(name:"Mackies")
+@superbowl.assets << Asset.find_by(name:"room a113")
+@dumb = Event.find_by(title:"Lisa's dumb meeting")
+@dumb.assets << Asset.third
+

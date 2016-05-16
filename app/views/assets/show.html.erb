@@ -2,4 +2,7 @@
 <p>Find me in app/views/assets/show.html.erb</p>
 <h2><%= @asset.name %></h2>
 <ul>
+  <% @asset.events.each do |event| %>
+    <li><%= link_to event.title, event_path(event) %></li>
+  <% end %>
 </ul>
